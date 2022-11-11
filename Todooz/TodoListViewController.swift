@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UITableViewController {
+class TodoListViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

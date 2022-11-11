@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CeW-fK-9GI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hNL-9h-c2J">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Todo List View Controller-->
+        <!--Todooz-->
         <scene sceneID="Jyh-Mz-PeD">
             <objects>
                 <tableViewController id="CeW-fK-9GI" customClass="TodoListViewController" customModule="Todooz" customModuleProvider="target" sceneMemberID="viewController">
@@ -30,13 +31,45 @@
                             <outlet property="delegate" destination="CeW-fK-9GI" id="Jio-J9-i1x"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Todooz" id="VOG-52-IUr"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h92-iy-wAK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="457" y="48"/>
+            <point key="canvasLocation" x="1366.6666666666667" y="47.544642857142854"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="mWQ-H0-PvM">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hNL-9h-c2J" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2l4-Op-CRV">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" name="BrandGrayColor"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" name="BrandGreenColor"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="CeW-fK-9GI" kind="relationship" relationship="rootViewController" id="zBb-fz-akz"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8IM-V6-NY9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="456.52173913043481" y="47.544642857142854"/>
         </scene>
     </scenes>
     <resources>
+        <namedColor name="BrandGrayColor">
+            <color red="0.18400000035762787" green="0.22400000691413879" blue="0.2199999988079071" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="BrandGreenColor">
+            <color red="0.0" green="1" blue="0.68627450980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

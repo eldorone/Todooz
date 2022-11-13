@@ -32,7 +32,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Todooz" id="VOG-52-IUr">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="vvw-bk-fP9"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="vvw-bk-fP9">
+                            <color key="tintColor" name="BrandGreenColor"/>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h92-iy-wAK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

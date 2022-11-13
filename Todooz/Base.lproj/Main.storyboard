@@ -31,7 +31,9 @@
                             <outlet property="delegate" destination="CeW-fK-9GI" id="Jio-J9-i1x"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Todooz" id="VOG-52-IUr"/>
+                    <navigationItem key="navigationItem" title="Todooz" id="VOG-52-IUr">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="vvw-bk-fP9"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h92-iy-wAK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

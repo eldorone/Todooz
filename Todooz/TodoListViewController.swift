@@ -14,7 +14,7 @@ class TodoListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //navigationController?.navigationBar.backgroundColor = UIColor(named: "BrandGrayColor")
+        navigationController?.navigationBar.backgroundColor = UIColor(named: "BrandGrayColor")
         
     }
     

@@ -59,6 +59,7 @@ class TodoListViewController: UITableViewController {
             
             //What will happen once the uset clicks the Add Item button on our UIAlert
             self.itemArray.append(textField.text!)
+            self.tableView.reloadData()
         }
         
         alert.addTextField { (alertTextField) in

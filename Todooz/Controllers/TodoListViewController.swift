@@ -15,8 +15,18 @@ class TodoListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let newItem = Item()
-        newItem.title = "Find Mike"
+        let newItem1 = Item()
+        newItem1.title = "Find Eldon"
+        itemArray.append(newItem1)
+        
+        let newItem2 = Item()
+        newItem2.title = "Buy football boots"
+        itemArray.append(newItem2)
+        
+        let newItem3 = Item()
+        newItem3.title = "Destroy Demogorgon"
+        itemArray.append(newItem3)
+        
         
 //        if let items = defaults.array(forKey: "TodoListArray") as? [String] {
 //            itemArray = items

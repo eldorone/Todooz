@@ -14,7 +14,7 @@ class TodoListViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
         let newItem1 = Item()
         newItem1.title = "Find Eldon"
         itemArray.append(newItem1)

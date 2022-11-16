@@ -10,6 +10,8 @@ import CoreData
 
 class TodoListViewController: UITableViewController, UINavigationBarDelegate {
     
+    // navigationController?.navigationBar.backgroundColor = UIColor(named: "BrandGrayColor")
+    
     var itemArray = [Item]()
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -22,7 +24,7 @@ class TodoListViewController: UITableViewController, UINavigationBarDelegate {
         
         loadItems()
         
-        // navigationController?.navigationBar.backgroundColor = UIColor(named: "BrandGrayColor")
+        
         
     }
     

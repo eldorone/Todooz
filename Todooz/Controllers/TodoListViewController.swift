@@ -20,7 +20,7 @@ class TodoListViewController: UITableViewController, UINavigationBarDelegate {
         
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         
-        //loadItems()
+        loadItems()
         
         // navigationController?.navigationBar.backgroundColor = UIColor(named: "BrandGrayColor")
         
@@ -99,17 +99,17 @@ class TodoListViewController: UITableViewController, UINavigationBarDelegate {
         self.tableView.reloadData()
     }
     
-//    func loadItems() {
-//       // if let data = try? Data(contentsOf: dataFilePath!) {
-//            //let decoder = PropertyListDecoder()
-//
-//            do {
-//               try context.save()
-//            } catch {
-//                print("Error decoding item array \(error)")
-//            }
-//
-//        //}
-//    }
+    func loadItems() {
+        let request: NSFetchRequest<Item> = Item.fetchRequest()
+        
+        do {
+            itemArray = try context.fetch(request)
+        } catch {
+            print("Error fetching context \(error)")
+        }
+        
+        
+    }
+    
 }
 

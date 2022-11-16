@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-class TodoListViewController: UITableViewController, UINavigationBarDelegate {
+class TodoListViewController: UITableViewController, UISearchBarDelegate {
     
     // navigationController?.navigationBar.backgroundColor = UIColor(named: "BrandGrayColor")
     
@@ -19,6 +19,7 @@ class TodoListViewController: UITableViewController, UINavigationBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        searchBar.delegate = self
         
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         

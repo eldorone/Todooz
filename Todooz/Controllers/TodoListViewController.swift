@@ -69,26 +69,21 @@ class TodoListViewController: UITableViewController, UINavigationBarDelegate {
             
             //What will happen once the uset clicks the Add Item button on our UIAlert
             
-            
-            
             let newItem = Item(context: self.context)
             newItem.title = textField.text!
-            newItem.done = false 
+            newItem.done = false
             self.itemArray.append(newItem)
-            
             self.saveItems()
-            
-            alert.addTextField { (alertTextField) in
-                alertTextField.placeholder = "Creat new item"
-                textField = alertTextField
-            }
-            
-            alert.addAction(action)
-            self.present(alert, animated: true, completion: nil)
         }
         
-        
-        
+        alert.addTextField { (alertTextField) in
+            alertTextField.placeholder = "Creat new item"
+            textField = alertTextField
+        }
+            
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+       
     }
     
     //MARK: - Model Manupulation Methods
@@ -98,7 +93,7 @@ class TodoListViewController: UITableViewController, UINavigationBarDelegate {
         do {
            try context.save()
         } catch {
-            print("Error encoding item array \(error)")
+            print("Error saving context \(error)")
         }
         
         self.tableView.reloadData()

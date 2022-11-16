@@ -48,7 +48,8 @@ class TodoListViewController: UITableViewController, UINavigationBarDelegate {
     //MARK - Tableview Delegate Methods
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //print(itemArray[indexPath.row])
+        
+        itemArray[indexPath.row].setValue("Completed", forKey: "title")
         
         itemArray[indexPath.row].done =  !itemArray[indexPath.row].done
         

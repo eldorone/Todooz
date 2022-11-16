@@ -49,9 +49,11 @@ class TodoListViewController: UITableViewController, UINavigationBarDelegate {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        itemArray[indexPath.row].setValue("Completed", forKey: "title")
+        context.delete(itemArray[indexPath.row])
+        itemArray.remove(at: indexPath.row)
         
-        itemArray[indexPath.row].done =  !itemArray[indexPath.row].done
+        //itemArray[indexPath.row].setValue("Completed", forKey: "title")
+        //itemArray[indexPath.row].done =  !itemArray[indexPath.row].done
         
         saveItems()
         

@@ -6,33 +6,23 @@
 //
 
 import UIKit
+import CoreData
 
-class TodoListViewController: UITableViewController {
+class TodoListViewController: UITableViewController, UINavigationBarDelegate {
     
     var itemArray = [Item]()
-     let defaults = UserDefaults.standard
-
+    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Items.plist")
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-        let newItem1 = Item()
-        newItem1.title = "Find Eldon"
-        itemArray.append(newItem1)
-        
-        let newItem2 = Item()
-        newItem2.title = "Buy football boots"
-        itemArray.append(newItem2)
-        
-        let newItem3 = Item()
-        newItem3.title = "Destroy Demogorgon"
-        itemArray.append(newItem3)
         
         
-//        if let items = defaults.array(forKey: "TodoListArray") as? [String] {
-//            itemArray = items
-//        }
-//
-//        navigationController?.navigationBar.backgroundColor = UIColor(named: "BrandGrayColor")
+        print(dataFilePath!)
+        
+        //loadItems()
+        
+        // navigationController?.navigationBar.backgroundColor = UIColor(named: "BrandGrayColor")
         
     }
     
@@ -48,20 +38,22 @@ class TodoListViewController: UITableViewController {
         let item = itemArray[indexPath.row]
         cell.textLabel?.text = item.title
         
-        cell.accessoryType = item.done == true ? .checkmark : .none
+        cell.accessoryType = item.done ? .checkmark : .none
+        cell.tintColor = UIColor(named: "BrandGreenColor")
         
         return cell
     }
     
     
     //MARK - Tableview Delegate Methods
-
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //print(itemArray[indexPath.row])
         
         itemArray[indexPath.row].done =  !itemArray[indexPath.row].done
-           
-        tableView.reloadData()
+        
+        saveItems()
+        
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -77,21 +69,52 @@ class TodoListViewController: UITableViewController {
             
             //What will happen once the uset clicks the Add Item button on our UIAlert
             
-            let newItem = Item()
-            newItem.title = textField.text!
             
+            
+            let newItem = Item(context: self.context)
+            newItem.title = textField.text!
+            newItem.done = false 
             self.itemArray.append(newItem)
-            self.defaults.set(self.itemArray, forKey: "TodoListArray")
-            self.tableView.reloadData()
+            
+            self.saveItems()
+            
+            alert.addTextField { (alertTextField) in
+                alertTextField.placeholder = "Creat new item"
+                textField = alertTextField
+            }
+            
+            alert.addAction(action)
+            self.present(alert, animated: true, completion: nil)
         }
         
-        alert.addTextField { (alertTextField) in
-            alertTextField.placeholder = "Creat new item"
-            textField = alertTextField
-        }
         
-        alert.addAction(action)
-        present(alert, animated: true, completion: nil)
+        
     }
+    
+    //MARK: - Model Manupulation Methods
+    
+    func saveItems() {
+       
+        do {
+           try context.save()
+        } catch {
+            print("Error encoding item array \(error)")
+        }
+        
+        self.tableView.reloadData()
+    }
+    
+//    func loadItems() {
+//       // if let data = try? Data(contentsOf: dataFilePath!) {
+//            //let decoder = PropertyListDecoder()
+//
+//            do {
+//               try context.save()
+//            } catch {
+//                print("Error decoding item array \(error)")
+//            }
+//
+//        //}
+//    }
 }
 

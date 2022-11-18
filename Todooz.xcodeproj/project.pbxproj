@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		492409C729278A8E0052D8FD /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492409C629278A8E0052D8FD /* CategoryViewController.swift */; };
 		492BEAAF2923A443007BA2AC /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 492BEAAD2923A443007BA2AC /* DataModel.xcdatamodeld */; };
 		49D682A4291E6752002848A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D682A3291E6752002848A5 /* AppDelegate.swift */; };
 		49D682A6291E6752002848A5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D682A5291E6752002848A5 /* SceneDelegate.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		492409C629278A8E0052D8FD /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		492BEAAE2923A443007BA2AC /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		49D682A0291E6752002848A5 /* Todooz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Todooz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49D682A3291E6752002848A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +53,7 @@
 			isa = PBXGroup;
 			children = (
 				49D682A7291E6752002848A5 /* TodoListViewController.swift */,
+				492409C629278A8E0052D8FD /* CategoryViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -181,6 +184,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				492409C729278A8E0052D8FD /* CategoryViewController.swift in Sources */,
 				492BEAAF2923A443007BA2AC /* DataModel.xcdatamodeld in Sources */,
 				49D682A8291E6752002848A5 /* TodoListViewController.swift in Sources */,
 				49D682A4291E6752002848A5 /* AppDelegate.swift in Sources */,

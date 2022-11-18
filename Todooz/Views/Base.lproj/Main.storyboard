@@ -72,10 +72,10 @@
             </objects>
             <point key="canvasLocation" x="1941" y="48"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Category View Controller-->
         <scene sceneID="5Ow-9u-zb1">
             <objects>
-                <tableViewController id="nB3-Eb-esv" sceneMemberID="viewController">
+                <tableViewController id="nB3-Eb-esv" customClass="CategoryViewController" customModule="Todooz" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="mhz-EH-Eeb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -95,7 +95,11 @@
                             <outlet property="delegate" destination="nB3-Eb-esv" id="jkb-rg-sQI"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Mdo-9w-VoG"/>
+                    <navigationItem key="navigationItem" id="Mdo-9w-VoG">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="R2D-sm-uBX">
+                            <color key="tintColor" name="BrandGrayColor"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="CeW-fK-9GI" kind="show" identifier="goToItems" id="Ngk-wo-61j"/>
                     </connections>

@@ -37,6 +37,32 @@ class CategoryViewController: UITableViewController {
     }
     
     
+    //MARK: - TableView Delegate Methods
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        performSegue(withIdentifier: "goToItems", sender: self)
+        
+        context.delete(categories[indexPath.row])
+        categories.remove(at: indexPath.row)
+        
+        //itemArray[indexPath.row].setValue("Completed", forKey: "title")
+        //itemArray[indexPath.row].done =  !itemArray[indexPath.row].done
+        
+        saveCategories()
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! TodoListViewController
+        
+        if let indexPath = tableView.indexPathForSelectedRow {
+            destinationVC.selectedCategory = categories[indexPath.row]
+        }
+    }
+    
+    
     //MARK: - Data Manipulation Methods
     
     func saveCategories() {
@@ -44,7 +70,7 @@ class CategoryViewController: UITableViewController {
         do {
            try context.save()
         } catch {
-            print("Error saving context \(error)")
+            print("Error saving category \(error)")
         }
         
         tableView.reloadData()
@@ -55,7 +81,7 @@ class CategoryViewController: UITableViewController {
         do {
             categories = try context.fetch(request)
         } catch {
-            print("Error fetching context \(error)")
+            print("Error loading categories \(error)")
         }
         
         tableView.reloadData()
@@ -89,22 +115,6 @@ class CategoryViewController: UITableViewController {
         }
             
         present(alert, animated: true, completion: nil)
-    }
-    
-    
-    //MARK: - TableView Delegate Methods
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        context.delete(categories[indexPath.row])
-        categories.remove(at: indexPath.row)
-        
-        //itemArray[indexPath.row].setValue("Completed", forKey: "title")
-        //itemArray[indexPath.row].done =  !itemArray[indexPath.row].done
-        
-        saveCategories()
-        
-        tableView.deselectRow(at: indexPath, animated: true)
     }
     
 }

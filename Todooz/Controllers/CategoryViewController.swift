@@ -24,19 +24,16 @@ class CategoryViewController: UITableViewController {
     //MARK: - TableView Datasource Methods
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return itemArray.count
+        return categoryArray.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoItemCell", for: indexPath)
-        let item = itemArray[indexPath.row]
-        cell.textLabel?.text = item.title
+        let categoryCell = tableView.dequeueReusableCell(withIdentifier: "ToDoCategoryCell", for: indexPath)
+        let category = categoryArray[indexPath.row]
+        categoryCell.textLabel?.text = category.name
         
-        cell.accessoryType = item.done ? .checkmark : .none
-        cell.tintColor = UIColor(named: "BrandGreenColor")
-        
-        return cell
+        return categoryCell
     }
     
     //MARK: - Data Manipulation Methods

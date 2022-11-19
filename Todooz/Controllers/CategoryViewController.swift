@@ -71,46 +71,40 @@ class CategoryViewController: UITableViewController {
         
         let alert = UIAlertController(title: "Add New Todooz Category", message: "", preferredStyle: .alert)
         
-        let action = UIAlertAction(title: "Add Item", style: .default) { (action) in
+        let action = UIAlertAction(title: "Add Category", style: .default) { (action) in
             
-            //What will happen once the uset clicks the Add Item button on our UIAlert
+            //What will happen once the user clicks the Add Category button on our UIAlert
             
-            let newItem = Item(context: self.context)
-            newItem.title = textField.text!
-            newItem.done = false
-            self.itemArray.append(newItem)
-            self.saveItems()
+            let newCategory = Category(context: self.context)
+            newCategory.name = textField.text!
+    
+            self.categoryArray.append(newCategory)
+            self.saveCategories()
         }
         
         alert.addTextField { (alertTextField) in
-            alertTextField.placeholder = "Creat new item"
+            alertTextField.placeholder = "Creat new category"
             textField = alertTextField
         }
             
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
-       
     }
-    
     
     
     //MARK: - TableView Delegate Methods
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        context.delete(itemArray[indexPath.row])
-        itemArray.remove(at: indexPath.row)
+        context.delete(categoryArray[indexPath.row])
+        categoryArray.remove(at: indexPath.row)
         
         //itemArray[indexPath.row].setValue("Completed", forKey: "title")
         //itemArray[indexPath.row].done =  !itemArray[indexPath.row].done
         
-        saveItems()
+        saveCategories()
         
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
 }
-
-
-
-

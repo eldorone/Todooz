@@ -10,7 +10,7 @@ import CoreData
 
 class CategoryViewController: UITableViewController {
     
-    var categoryArray = [Category]()
+    var categories = [Category]()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
     override func viewDidLoad() {
@@ -25,14 +25,13 @@ class CategoryViewController: UITableViewController {
     //MARK: - TableView Datasource Methods
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return categoryArray.count
+        return categories.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let categoryCell = tableView.dequeueReusableCell(withIdentifier: "ToDoCategoryCell", for: indexPath)
-        let category = categoryArray[indexPath.row]
-        categoryCell.textLabel?.text = category.name
+        categoryCell.textLabel?.text = categories[indexPath.row].name
         
         return categoryCell
     }
@@ -48,13 +47,13 @@ class CategoryViewController: UITableViewController {
             print("Error saving context \(error)")
         }
         
-        self.tableView.reloadData()
+        tableView.reloadData()
     }
 
     func loadCategories(fetch request: NSFetchRequest<Category> = Category.fetchRequest()) {
         
         do {
-            categoryArray = try context.fetch(request)
+            categories = try context.fetch(request)
         } catch {
             print("Error fetching context \(error)")
         }
@@ -69,7 +68,7 @@ class CategoryViewController: UITableViewController {
         
         var textField = UITextField()
         
-        let alert = UIAlertController(title: "Add New Todooz Category", message: "", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Add New Category", message: "", preferredStyle: .alert)
         
         let action = UIAlertAction(title: "Add Category", style: .default) { (action) in
             
@@ -78,16 +77,17 @@ class CategoryViewController: UITableViewController {
             let newCategory = Category(context: self.context)
             newCategory.name = textField.text!
     
-            self.categoryArray.append(newCategory)
+            self.categories.append(newCategory)
             self.saveCategories()
         }
+        
+        alert.addAction(action)
         
         alert.addTextField { (alertTextField) in
             alertTextField.placeholder = "Creat new category"
             textField = alertTextField
         }
             
-        alert.addAction(action)
         present(alert, animated: true, completion: nil)
     }
     
@@ -96,8 +96,8 @@ class CategoryViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        context.delete(categoryArray[indexPath.row])
-        categoryArray.remove(at: indexPath.row)
+        context.delete(categories[indexPath.row])
+        categories.remove(at: indexPath.row)
         
         //itemArray[indexPath.row].setValue("Completed", forKey: "title")
         //itemArray[indexPath.row].done =  !itemArray[indexPath.row].done

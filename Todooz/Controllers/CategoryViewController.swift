@@ -21,6 +21,7 @@ class CategoryViewController: UITableViewController {
         loadCategories()
     }
     
+    
     //MARK: - TableView Datasource Methods
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -36,9 +37,10 @@ class CategoryViewController: UITableViewController {
         return categoryCell
     }
     
+    
     //MARK: - Data Manipulation Methods
     
-    func saveItems() {
+    func saveCategories() {
        
         do {
            try context.save()
@@ -49,10 +51,10 @@ class CategoryViewController: UITableViewController {
         self.tableView.reloadData()
     }
 
-    func loadItems(fetch request: NSFetchRequest<Item> = Item.fetchRequest()) {
+    func loadCategories(fetch request: NSFetchRequest<Category> = Category.fetchRequest()) {
         
         do {
-            itemArray = try context.fetch(request)
+            categoryArray = try context.fetch(request)
         } catch {
             print("Error fetching context \(error)")
         }
@@ -60,13 +62,14 @@ class CategoryViewController: UITableViewController {
         tableView.reloadData()
     }
     
+    
     //MARK: - Add New Categories
 
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
         
         var textField = UITextField()
         
-        let alert = UIAlertController(title: "Add New Todooz Item", message: "", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Add New Todooz Category", message: "", preferredStyle: .alert)
         
         let action = UIAlertAction(title: "Add Item", style: .default) { (action) in
             

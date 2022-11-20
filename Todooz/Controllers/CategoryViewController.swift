@@ -8,7 +8,14 @@
 import UIKit
 import CoreData
 
+class TheCell: UITableViewCell {
+   
+    @IBOutlet weak var ctgLabel: UILabel!
+}
+
 class CategoryViewController: UITableViewController {
+    
+    
     
     var categories = [Category]()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -17,8 +24,7 @@ class CategoryViewController: UITableViewController {
         super.viewDidLoad()
         
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
-        
-        loadCategories()
+       
     }
     
     
@@ -30,8 +36,12 @@ class CategoryViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let categoryCell = tableView.dequeueReusableCell(withIdentifier: "ToDoCategoryCell", for: indexPath)
-        categoryCell.textLabel?.text = categories[indexPath.row].name
+        let categoryCell = tableView.dequeueReusableCell(withIdentifier: "ToDoCategoryCell", for: indexPath) as! TheCell
+       // categoryCell.textLabel?.text = categories[indexPath.row].name
+        
+        print(categories[indexPath.row].name)
+        
+        categoryCell.ctgLabel?.text = categories[indexPath.row].name
         
         return categoryCell
     }
@@ -43,8 +53,8 @@ class CategoryViewController: UITableViewController {
         
         performSegue(withIdentifier: "goToItems", sender: self)
         
-        context.delete(categories[indexPath.row])
-        categories.remove(at: indexPath.row)
+        //context.delete(categories[indexPath.row])
+       // categories.remove(at: indexPath.row)
         
         //itemArray[indexPath.row].setValue("Completed", forKey: "title")
         //itemArray[indexPath.row].done =  !itemArray[indexPath.row].done
@@ -55,6 +65,7 @@ class CategoryViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         let destinationVC = segue.destination as! TodoListViewController
         
         if let indexPath = tableView.indexPathForSelectedRow {
@@ -103,6 +114,8 @@ class CategoryViewController: UITableViewController {
             let newCategory = Category(context: self.context)
             newCategory.name = textField.text!
     
+            print(newCategory)
+            
             self.categories.append(newCategory)
             self.saveCategories()
         }

@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-class TheCell: UITableViewCell {
+class DefaultCell: UITableViewCell {
    
     @IBOutlet weak var ctgLabel: UILabel!
 }
@@ -36,7 +36,7 @@ class CategoryViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let categoryCell = tableView.dequeueReusableCell(withIdentifier: "ToDoCategoryCell", for: indexPath) as! TheCell
+        let categoryCell = tableView.dequeueReusableCell(withIdentifier: "ToDoCategoryCell", for: indexPath) as! DefaultCell
        // categoryCell.textLabel?.text = categories[indexPath.row].name
         
         print(categories[indexPath.row].name)

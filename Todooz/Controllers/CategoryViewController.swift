@@ -10,7 +10,7 @@ import CoreData
 
 class DefaultCell: UITableViewCell {
    
-    @IBOutlet weak var ctgLabel: UILabel!
+    @IBOutlet weak var categoryLabel: UILabel!
 }
 
 class CategoryViewController: UITableViewController {
@@ -41,7 +41,7 @@ class CategoryViewController: UITableViewController {
         
         print(categories[indexPath.row].name)
         
-        categoryCell.ctgLabel?.text = categories[indexPath.row].name
+        categoryCell.categoryLabel?.text = categories[indexPath.row].name
         
         return categoryCell
     }

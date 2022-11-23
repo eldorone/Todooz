@@ -36,14 +36,14 @@ class CategoryViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let categoryCell = tableView.dequeueReusableCell(withIdentifier: "ToDoCategoryCell", for: indexPath) as! DefaultCell
+        let ctgCell = tableView.dequeueReusableCell(withIdentifier: "ToDoCategoryCell", for: indexPath) as! DefaultCell
        // categoryCell.textLabel?.text = categories[indexPath.row].name
         
         print(categories[indexPath.row].name)
         
-        categoryCell.categoryLabel?.text = categories[indexPath.row].name
+        ctgCell.categoryLabel?.text = categories[indexPath.row].name
         
-        return categoryCell
+        return ctgCell
     }
     
     
